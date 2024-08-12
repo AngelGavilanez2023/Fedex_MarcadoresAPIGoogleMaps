@@ -1,0 +1,302 @@
+CREATE TABLE FedEx (
+     id_fed varchar(10) PRIMARY KEY, 
+     nombre_fed VARCHAR (50) NOT NULL , 
+     direccion_fed VARCHAR (100) NOT NULL , 
+     pais_fed VARCHAR (50) NOT NULL , 
+     ciudad_fed VARCHAR (100) NOT NULL , 
+     telefono_fed VARCHAR (100) NOT NULL , 
+     descripcion_fed VARCHAR (200) NOT NULL
+    );
+DELIMITER //
+CREATE TRIGGER trg_FedEx_id BEFORE INSERT ON FedEx
+FOR EACH ROW
+BEGIN
+  DECLARE next_id INT;
+  SET next_id = (SELECT COALESCE(MAX(CAST(SUBSTRING(id_fed, 4) AS UNSIGNED)), 0) + 1 FROM FedEx);
+  SET NEW.id_fed = CONCAT('fed', LPAD(next_id, 3, '0'));
+END//
+
+DELIMITER ;
+
+INSERT INTO `fedex` (`nombre_fed`, `direccion_fed`, `pais_fed`, `ciudad_fed`, `telefono_fed`, `descripcion_fed`) VALUES
+('FEDEX MATRIZ', 'Renaissance Center 1715 Aaron Brenner Drive Suite 600', 'EE.UU', 'Memphis', '1800-463-3339', 'FedEx le ofrece una extensa gama de servicios de encomienda. Ya sea que envíe documentos, cajas o fletes, puede contar con FedEx para una entrega rápida y confiable en todo el mundo.');
+
+*******************************************************************************************************
+
+CREATE TABLE continentes (
+  id_con varchar(10) PRIMARY KEY,
+  nombre_con VARCHAR(200)
+);
+DELIMITER //
+CREATE TRIGGER trg_continentes_id BEFORE INSERT ON continentes
+FOR EACH ROW
+BEGIN
+  DECLARE next_id INT;
+  SET next_id = (SELECT COALESCE(MAX(CAST(SUBSTRING(id_con, 4) AS UNSIGNED)), 0) + 1 FROM continentes);
+  SET NEW.id_con = CONCAT('con', LPAD(next_id, 3, '0'));
+END//
+INSERT INTO `continentes` (`nombre_con`) VALUES ('AMERICA');
+
+
+
+*******************************************************************************************************
+
+
+CREATE TABLE paises (
+     id_pai varchar(10) PRIMARY KEY , 
+     nombre_pai VARCHAR (100) NOT NULL , 
+     id_con varchar(10) NOT NULL,
+     FOREIGN KEY (id_con) REFERENCES continentes(id_con)
+);
+DELIMITER //
+CREATE TRIGGER trg_paises_id BEFORE INSERT ON paises
+FOR EACH ROW
+BEGIN
+  DECLARE next_id INT;
+  SET next_id = (SELECT COALESCE(MAX(CAST(SUBSTRING(id_pai, 4) AS UNSIGNED)), 0) + 1 FROM paises);
+  SET NEW.id_pai = CONCAT('pai', LPAD(next_id, 3, '0'));
+END//
+
+DELIMITER ;
+
+
+*******************************************************************************************************
+
+CREATE TABLE sucursales (
+     id_suc varchar(10) PRIMARY KEY ,	
+     nombre_suc VARCHAR (100) NOT NULL , 
+     ciudad_suc VARCHAR (100) NOT NULL , 
+     direccion_suc VARCHAR (200) NOT NULL , 
+     telefono_suc VARCHAR (100) NOT NULL , 
+     latitud_suc VARCHAR (500) NOT NULL , 
+     longitud_suc VARCHAR (500) NOT NULL , 
+     id_fed varchar(10) NOT NULL,
+     id_con varchar(10) NOT NULL,
+     id_pai varchar(10) NOT NULL,
+     FOREIGN KEY (id_fed) REFERENCES FedEx(id_fed),
+     FOREIGN KEY (id_con) REFERENCES continentes(id_con),
+     FOREIGN KEY (id_pai) REFERENCES paises(id_pai)
+);
+DELIMITER //
+CREATE TRIGGER trg_sucursales_id BEFORE INSERT ON sucursales
+FOR EACH ROW
+BEGIN
+  DECLARE next_id INT;
+  SET next_id = (SELECT COALESCE(MAX(CAST(SUBSTRING(id_suc, 4) AS UNSIGNED)), 0) + 1 FROM sucursales);
+  SET NEW.id_suc = CONCAT('suc', LPAD(next_id, 3, '0'));
+END//
+
+DELIMITER ;
+
+
+-----OPCIONAL-----
+
+INSERT INTO `sucursales` (`nombre_suc`, `direccion_suc`, `ciudad_suc`, `pais_suc`, `telefono_suc`, `latitud_suc`, `longitud_suc`, `id_fed`) VALUES
+('FEDEX GUAYAQUIL', 'Calle C No 106 y Av. Juan Tanca Marengo', 'Guayaquil', 'Ecuador', '1800033339', '-2.151886838385355', '-79.87793497655308', 'fed001'),
+('FEDEX AMBATO(1)', 'Av Cevallos 01-161 Y Abdon Ca 170307', 'Ambato', 'Ecuador', '1800033398', '-1.2590176538893125', '-78.7032407615987', 'fed001'),
+('FEDEX AMBATO(2)', 'Calle Chirimoyas 01-14 Y Av G', 'Ambato', 'Ecuador', '1800033388', '-1.2368785888624179', '-78.63352478488362', 'fed001'),
+('FEDEX CUENCA', 'Av. Gil Ramírez Dávalos 1-156 y El Pedregal CC CENCOMAY 010102 ', 'Cuenca', 'Ecuador', '1800033377', '-2.883866380899316', '-78.98237288936055', 'fed001'),
+('FEDEX QUITO(1)', 'Av Amazonas N24-01 Y Wilson Quito 170307', 'Quito', 'Ecuador', '1800033366', '-0.20167107749956273', '-78.49276782020009', 'fed001'),
+('FEDEX QUITO(2)', 'Av Interoceanica Y Pampite 170307', 'Quito', 'Ecuador', '1800033355', '-0.1914130294893171', '-78.46924082382596', 'fed001'),
+('FEDEX QUITO(3)', 'Av Naciones Unidas E5-47 Y A Quito 170307', 'Quito', 'Ecuador', '1800033344', '-0.17514685619584883', '-78.48384142859852', 'fed001'),
+('FEDEX BOGOTÁ', 'Avenida Carrera 19 # 120 – 79, LOCAL 6 Local6 Bogota 110111 CO', 'Bogotá', 'Colombia', '018000110339', '4.638596572941036', '-74.0976089332906', 'fed001'),
+('FEDEX LIMA(1)', 'Calle Los Cedros 143 Urbanizacion Bocanegra Lima PE', 'Lima', 'Peru', '016806120', '-12.073004649806183', '-77.05198706134236', 'fed001'),
+('FedEx Brasil - Duque De Caxias', 'Rod Washington Luiz 7749 Blvd 2 Arm 13 Duque De Caxias RJ 25050-000 BR', 'Rio de Janiero', 'Brasil', '08007033339', '-22.911305783962767', '-43.19517076953328', 'fed001');
+
+**************************************************************************
+CREATE TABLE clientes (
+     id_cli varchar(10) PRIMARY KEY,
+     cedula_cli varchar(100) NOT NULL,
+     apellidos_cli VARCHAR (100) NOT NULL , 
+     nombres_cli VARCHAR (100) NOT NULL,
+     id_pai varchar(200) NOT NULL, 
+     direccion_cli VARCHAR (200) NOT NULL , 
+     ciudad_cli VARCHAR (100) NOT NULL , 
+     telefono_cli VARCHAR (100) NOT NULL , 
+     email_cli VARCHAR (100) NOT NULL , 
+     latitud_cli VARCHAR (500) NOT NULL , 
+     longitud_cli VARCHAR (500) NOT NULL,
+     FOREIGN KEY (id_pai)REFERENCES paises(id_pai)
+
+);
+
+DELIMITER //
+
+CREATE TRIGGER trg_clientes_id BEFORE INSERT ON clientes
+FOR EACH ROW
+BEGIN
+  DECLARE next_id INT;
+  SET next_id = (SELECT COALESCE(MAX(CAST(SUBSTRING(id_cli, 4) AS UNSIGNED)), 0) + 1 FROM clientes);
+  SET NEW.id_cli = CONCAT('cli', LPAD(next_id, 3, '0'));
+END//
+
+DELIMITER ;
+
+INSERT INTO `clientes` (`cedula_cli`, `apellidos_cli`, `nombres_cli`, `direccion_cli`, `ciudad_cli`, `pais_cli`, `telefono_cli`, `email_cli`, `latitud_cli`, `longitud_cli`) VALUES
+('0550712962', 'Vaca', 'Luis', 'Calle Simon Bolivar y Benjamin Terán', 'Ambato', 'Ecuador', '0992829599', 'luis@gmail.com', '-1.2516517523430732', '-78.61775636930618'),
+('0555071234', 'kjjhl', 'lkjh', 'kjh', 'lljk', 'lkjh', '987', 'jkh', '-2.4098697409545817', '-76.58403814776814'),
+('0750520967', 'Asanza Orozco', 'Carlos Javier', 'Av. Simon Rodriguez y calle Nicaragua', 'Latacunga', 'Ecuador', '0963129283', 'carlosasanza15072001@gmail.com', '-0.9210029682717181', '-78.63180012448704'),
+('0550712962', 'Gavilanez Guanoluisa', 'Angel Rodrigo', 'San Felipe, Calle Paraguay y 10 de Agosto', 'Latacunga', 'Peru', '0992829599', 'angel.gavilanes2962@utc.edu.ec', '-5.193979440857222', '-80.62700689776814'),
+('1234567890', 'Quiroga Quizhpe', 'Chanel Carolina', 'Calle México', 'Latacunga', 'Ecuador', '0963129299', 'chanelquiroga@gmail.com', '-0.919994587831562', '-78.63116444095051');
+
+
+
+************************************************************************** PEDIDO NO INGRESAR CON DATOS
+CREATE TABLE envios (
+     id_env varchar(10) PRIMARY KEY , 
+     id_cli varchar(10) NOT NULL ,
+     id_con_origen varchar(150) NOT NULL,
+     id_pais_origen varchar(200) NOT NULL,
+     id_suc_origen varchar(200) NOT NULL,
+     id_con_destino varchar(150) NOT NULL,
+     id_pais_destino varchar(200) NOT NULL,
+     id_suc_destino varchar(200) NOT NULL,
+     fecha_envio_env DATE NOT NULL , 
+     fecha_entrega_env DATE NOT NULL ,
+     detalle_env VARCHAR (500) NOT NULL , 
+     peso_env DECIMAL (28) NOT NULL , 
+     latitud_env VARCHAR (500) NOT NULL , 
+     longitud_env VARCHAR (500) NOT NULL,
+     FOREIGN KEY (id_cli)REFERENCES clientes(id_cli),
+     FOREIGN KEY (id_con_origen) REFERENCES continentes(id_con),
+     FOREIGN KEY (id_pais_origen) REFERENCES paises(id_pai),
+     FOREIGN KEY (id_suc_origen)REFERENCES sucursales(id_suc),
+     FOREIGN KEY (id_con_destino) REFERENCES continentes(id_con), 
+     FOREIGN KEY (id_pais_destino) REFERENCES paises(id_pai),
+     FOREIGN KEY (id_suc_destino)REFERENCES sucursales(id_suc)
+    );
+
+
+DELIMITER //
+
+CREATE TRIGGER trg_envios_id BEFORE INSERT ON envios
+FOR EACH ROW
+BEGIN
+  DECLARE next_id INT;
+  SET next_id = (SELECT COALESCE(MAX(CAST(SUBSTRING(id_env, 4) AS UNSIGNED)), 0) + 1 FROM envios);
+  SET NEW.id_env = CONCAT('env', LPAD(next_id, 3, '0'));
+END//
+
+DELIMITER ;
+
+--------------------------------OPCIONAL---------------------
+INSERT INTO `pedidos` (`id_cli`, `fecha_env_ped`, `fecha_ent_ped`, `id_suc`, `destino_ped`, `estado_actual_ped`, `peso_ped`, `latitud_ped`, `longitud_ped`) VALUES
+('cli001', '2023-06-22', '2023-06-30', 'suc001', 'FEDEX AMBATO(2)', 'Ingresado', 10, '-1.2890597649976763', '-78.61703136024992'),
+('cli007', '2023-06-22', '2023-06-23', 'suc001', 'FEDEX QUITO(3)', 'Ingresado', 100, '-0.1534566737126671', '-78.48519542274992'),
+('cli007', '2023-06-22', '2023-06-23', 'suc001', 'FEDEX BOGOTÁ', 'Ingresado', 30, '4.72118104576495', '-74.08585765419524');
+
+*****************************************************************************
+CREATE TABLE vehiculos (
+     id_veh varchar(10) PRIMARY KEY, 
+     marca_veh VARCHAR (100) NOT NULL , 
+     modelo_veh VARCHAR (100) NOT NULL , 
+     placa_veh VARCHAR (100) NOT NULL , 
+     capacidad_carga_veh DECIMAL (28) NOT NULL , 
+     tipo_veh VARCHAR (100) NOT NULL , 
+     estado_veh VARCHAR (100) NOT NULL , 
+     id_suc varchar(10) NOT NULL, 
+     FOREIGN KEY (id_suc) REFERENCES sucursales(id_suc) 
+    );
+DELIMITER //
+CREATE TRIGGER trg_vehiculos_id BEFORE INSERT ON vehiculos
+FOR EACH ROW
+BEGIN
+  DECLARE next_id INT;
+  SET next_id = (SELECT COALESCE(MAX(CAST(SUBSTRING(id_veh, 4) AS UNSIGNED)), 0) + 1 FROM vehiculos);
+  SET NEW.id_veh = CONCAT('veh', LPAD(next_id, 3, '0'));
+END//
+
+DELIMITER ;
+
+*********************************************************************************
+CREATE TABLE empleados (
+     id_emp varchar(10) PRIMARY KEY,
+     cedula_emp VARCHAR (100) NOT NULL,
+     apellidos_emp VARCHAR (100) NOT NULL , 
+     nombres_emp VARCHAR (100) NOT NULL , 
+     direccion_emp VARCHAR (200) NOT NULL , 
+     ciudad_emp VARCHAR (100) NOT NULL , 
+     pais_emp VARCHAR (50) NOT NULL , 
+     telefono_emp VARCHAR (100) NOT NULL , 
+     email_emp VARCHAR (100) NOT NULL , 
+     cargo_emp VARCHAR (100) NOT NULL , 
+     id_suc varchar(10) NOT NULL,  
+     id_veh varchar(10) NOT NULL,
+     FOREIGN KEY (id_suc) REFERENCES sucursales(id_suc),
+     FOREIGN KEY (id_veh) REFERENCES vehiculos(id_veh)
+    );
+DELIMITER //
+CREATE TRIGGER trg_empleados_id BEFORE INSERT ON empleados
+FOR EACH ROW
+BEGIN
+  DECLARE next_id INT;
+  SET next_id = (SELECT COALESCE(MAX(CAST(SUBSTRING(id_emp, 4) AS UNSIGNED)), 0) + 1 FROM empleados);
+  SET NEW.id_emp = CONCAT('emp', LPAD(next_id, 3, '0'));
+END//
+
+DELIMITER ;
+
+****************************************************************************
+CREATE TABLE usuario (
+  codigo_usu varchar(10) PRIMARY KEY,
+  nombre_usu VARCHAR(500) NOT NULL,
+  apellido_usu VARCHAR(500) NOT NULL,
+  telefono_usu VARCHAR(20) NOT NULL,
+  email_usu VARCHAR(200) NOT NULL,
+  password_usu VARCHAR(500) NOT NULL,
+  estado_usu TINYINT(4) NOT NULL,
+  perfil_usu VARCHAR(100) NOT NULL
+);
+DELIMITER //
+CREATE TRIGGER trg_usuario_id BEFORE INSERT ON usuario
+FOR EACH ROW
+BEGIN
+  DECLARE next_id INT;
+  SET next_id = (SELECT COALESCE(MAX(CAST(SUBSTRING(codigo_usu, 4) AS UNSIGNED)), 0) + 1 FROM usuario);
+  SET NEW.codigo_usu = CONCAT('usu', LPAD(next_id, 3, '0'));
+END//
+
+DELIMITER ;
+
+INSERT INTO `usuario` (`nombre_usu`, `apellido_usu`, `telefono_usu`, `email_usu`, `password_usu`, `estado_usu`, `perfil_usu`) VALUES
+('Administrador', 'del Sistema', '0992829599', 'admin@utc.edu.ec', 'analitica', 1, 'ADMINISTRADOR');
+
+
+********************************************************************************
+
+CREATE TABLE perfil (
+  codigo_per varchar(10) PRIMARY KEY,
+  nombre_per VARCHAR(500) NOT NULL
+);
+DELIMITER //
+CREATE TRIGGER trg_perfil_id BEFORE INSERT ON perfil
+FOR EACH ROW
+BEGIN
+  DECLARE next_id INT;
+  SET next_id = (SELECT COALESCE(MAX(CAST(SUBSTRING(codigo_per, 4) AS UNSIGNED)), 0) + 1 FROM perfil);
+  SET NEW.codigo_per = CONCAT('per', LPAD(next_id, 3, '0'));
+END//
+
+DELIMITER ;
+
+************************************************************************************
+
+CREATE TABLE perfil_usuario (
+  codigo_pu varchar(10) PRIMARY KEY,
+  codigo_usu varchar(10) NOT NULL,
+  codigo_per varchar(10) NOT NULL,
+  FOREIGN KEY (codigo_usu) REFERENCES usuario(codigo_usu),
+  FOREIGN KEY (codigo_per) REFERENCES perfil(codigo_per)
+);
+DELIMITER //
+CREATE TRIGGER trg_perfil_usuario_id BEFORE INSERT ON perfil_usuario
+FOR EACH ROW
+BEGIN
+  DECLARE next_id INT;
+  SET next_id = (SELECT COALESCE(MAX(CAST(SUBSTRING(codigo_pu, 4) AS UNSIGNED)), 0) + 1 FROM perfil_usuario);
+  SET NEW.codigo_pu = CONCAT('pu', LPAD(next_id, 3, '0'));
+END//
+
+DELIMITER ;
+
+************************************************************************************

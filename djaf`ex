@@ -1,0 +1,245 @@
+[33mcommit 7be254871507f9ccb763b8cd0f0ab5302a73f753[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: JavAsan0 <carlosasanza15072001@gmail.com>
+Date:   Wed Jun 28 01:48:48 2023 -0500
+
+    v.20 Funcional
+
+[33mcommit ea09e95677cc3a36d0644ceb32a43faa9c25b571[m
+Author: JavAsan0 <carlosasanza15072001@gmail.com>
+Date:   Tue Jun 27 22:39:44 2023 -0500
+
+    v.19 Editar Envio
+
+[33mcommit 9eff187acec93748671cb7a1839c994bcb649f19[m
+Merge: ae28d98 2c04495
+Author: JavAsan0 <carlosasanza15072001@gmail.com>
+Date:   Tue Jun 27 21:06:20 2023 -0500
+
+    Merge branch 'main' of https://gitlab.com/JavAsan0/fedex
+
+[33mcommit 2c044957abdaf34bb4ebf4e8f4ec76d848210913[m
+Author: angee <repositorios18@gmail.com>
+Date:   Tue Jun 27 21:03:52 2023 -0500
+
+    V.18.1 Sucursales no deja ingresar
+
+[33mcommit ae28d98bb32ea5a82500b0667c01c2f96352b034[m
+Merge: 3877347 4e899b2
+Author: JavAsan0 <carlosasanza15072001@gmail.com>
+Date:   Tue Jun 27 20:22:55 2023 -0500
+
+    Merge branch 'main' of https://gitlab.com/JavAsan0/fedex
+
+[33mcommit 3877347dbf8674b583b0e8b1f0ada9d6cc11d906[m
+Author: JavAsan0 <carlosasanza15072001@gmail.com>
+Date:   Tue Jun 27 20:22:35 2023 -0500
+
+    v.16.1 Mejora del boton envio v.02
+
+[33mcommit 4e899b21c3ed595a946f88eda4aa20e423186d65[m
+Author: angee <repositorios18@gmail.com>
+Date:   Tue Jun 27 20:08:08 2023 -0500
+
+    V.18 Mesajes flotantes funcional solo ELIMINAR
+
+[33mcommit a735eddd379dbdc2609cc2b8dd092cd212f627e3[m
+Author: angee <repositorios18@gmail.com>
+Date:   Tue Jun 27 19:25:26 2023 -0500
+
+    V.17.4 Editar Sucursales incompleto
+
+[33mcommit 077a6f4ebcf4e6cf461d9fc84614ca0f5deaecff[m
+Author: angee <repositorios18@gmail.com>
+Date:   Tue Jun 27 18:41:34 2023 -0500
+
+    V.17.3 Validaciones de campos para Clientes, Envios y Sucursales
+
+[33mcommit f1d994f2a6d502f6e7f8f602ddca53e80548c842[m
+Author: angee <repositorios18@gmail.com>
+Date:   Tue Jun 27 17:38:01 2023 -0500
+
+    V.17.2 Editar Envions Incompleto
+
+[33mcommit 4a649971c169bcbd4370bed49af2a4c70a332a54[m
+Author: angee <repositorios18@gmail.com>
+Date:   Tue Jun 27 12:49:14 2023 -0500
+
+    V.17.1 Icono Truck Funcional Sin validaciones ni sms de confirmacion
+
+[33mcommit 9ab2ea218a0d9cf9e8cfe77e7b4c99f12a2fcf96[m
+Author: JavAsan0 <carlosasanza15072001@gmail.com>
+Date:   Tue Jun 27 12:03:23 2023 -0500
+
+    v.16.1 Mejora del boton envio
+
+[33mcommit d66df8b2c93341bd33b393727fefc14a2902994e[m
+Author: angee <repositorios18@gmail.com>
+Date:   Tue Jun 27 10:32:40 2023 -0500
+
+    V.17 Boton Eliminar funcional de Envios
+
+[33mcommit c227c0cbb297703bfdb4f2655e9a3bf446f26047[m
+Author: JavAsan0 <carlosasanza15072001@gmail.com>
+Date:   Tue Jun 27 09:54:02 2023 -0500
+
+    v.16 Listado-Nuevos-Reportes Funcional v.01
+
+[33mcommit 9ff775bd2a9838ba18b2802532bf600dd5fa1471[m
+Author: JavAsan0 <carlosasanza15072001@gmail.com>
+Date:   Mon Jun 26 15:37:16 2023 -0500
+
+    v.15.1 Nuevos-Listados-LNP con Boton Ruta v.2
+
+[33mcommit 657e8a5ccaef3aed2959293e5ecaafd706356d8e[m
+Author: JavAsan0 <carlosasanza15072001@gmail.com>
+Date:   Mon Jun 26 09:43:43 2023 -0500
+
+    v.15.1 Nuevos-Listados-LNP con Boton Ruta v.1
+
+[33mcommit 054aadfbe4e2d680f06086fd395caf56f560bf54[m
+Author: JavAsan0 <carlosasanza15072001@gmail.com>
+Date:   Mon Jun 26 01:08:47 2023 -0500
+
+    v.15 Rutas en Mapa Envio con Buscador
+
+[33mcommit 809e212b5056b9b6d0a114fcd9ea574358c6c032[m
+Author: angee <repositorios18@gmail.com>
+Date:   Sat Jun 24 21:22:23 2023 -0500
+
+    v.14 Mejoras SQL 2 y 3
+
+[33mcommit 9bfe9d0de7c9220a85f89fb5fdd2f1c9455a5616[m
+Author: angee <repositorios18@gmail.com>
+Date:   Sat Jun 24 17:42:25 2023 -0500
+
+    v.13 Mejoras Vistas Responsive: Envios y Reportes
+
+[33mcommit e80a7c8cbbe5ec15c3e0e781894d2b76804fb770[m
+Author: angee <repositorios18@gmail.com>
+Date:   Sat Jun 24 14:56:10 2023 -0500
+
+    V.12 Mejoras SQL 1 Ids perzonlizados
+
+[33mcommit 74a3ef6ec30254e5462895c33320a8941c9823cc[m
+Author: JavAsan0 <carlosasanza15072001@gmail.com>
+Date:   Sat Jun 24 10:40:30 2023 -0500
+
+    INICIO FEDEX V.02
+
+[33mcommit 7b4f0c39aa71c59bcb0aec018803a14bdef3d24f[m
+Merge: 59233b7 2a837f5
+Author: JavAsan0 <carlosasanza15072001@gmail.com>
+Date:   Sat Jun 24 10:37:34 2023 -0500
+
+    Merge branch 'main' of https://gitlab.com/JavAsan0/fedex
+
+[33mcommit 59233b7f781f7a6796149c911469fa8000b156d0[m
+Author: JavAsan0 <carlosasanza15072001@gmail.com>
+Date:   Wed Jun 21 09:13:11 2023 -0500
+
+    v.11 FUNCIONAL FINAL 1.1  :)
+
+[33mcommit 2a837f57a5c7a4e7895969b6282828be9557d7d6[m
+Author: angee <repositorios18@gmail.com>
+Date:   Wed Jun 21 08:12:13 2023 -0500
+
+    V10. Funcional 1,1
+
+[33mcommit 6622b50e544514998e174b66cfbf5f4bcc5b1c0e[m
+Author: angee <repositorios18@gmail.com>
+Date:   Wed Jun 21 07:51:31 2023 -0500
+
+    Funcional 1
+
+[33mcommit 9cd8e18d8b524c380b3dd254d886749ef2b4a775[m
+Merge: 5696085 47f7395
+Author: angee <repositorios18@gmail.com>
+Date:   Tue Jun 20 23:45:35 2023 -0500
+
+    Merge branch 'main' of https://gitlab.com/JavAsan0/fedex
+
+[33mcommit 569608567601d9ef5e1e9e1543efe90faa65b7ba[m
+Author: angee <repositorios18@gmail.com>
+Date:   Tue Jun 20 23:44:24 2023 -0500
+
+    V9. Maquetado Completo: Publico y Admin
+
+[33mcommit 47f7395e64f5e5fcf05f409e77ff88eb6081f618[m
+Merge: 61bda28 a46b57f
+Author: JavAsan0 <carlosasanza15072001@gmail.com>
+Date:   Tue Jun 20 21:07:46 2023 -0500
+
+    Merge branch 'main' of https://gitlab.com/JavAsan0/fedex
+
+[33mcommit 61bda28ca43d87ae7c23d87202cc95411bbec323[m
+Author: JavAsan0 <carlosasanza15072001@gmail.com>
+Date:   Tue Jun 20 21:07:22 2023 -0500
+
+    v8.1
+
+[33mcommit a46b57f67f62a0b3abe2dc4555512f0276008d5a[m
+Author: angee <repositorios18@gmail.com>
+Date:   Tue Jun 20 20:49:19 2023 -0500
+
+    V.8 Maquetado plantilla Admin y logo
+
+[33mcommit 8984b4a4409c11d572d52df7b2e85981c1b4b344[m
+Author: JavAsan0 <carlosasanza15072001@gmail.com>
+Date:   Tue Jun 20 12:17:08 2023 -0500
+
+    v.7 Buscador Reporte Sucursales(FUNCIONAL)
+
+[33mcommit 8452290951cd7bf6a53353be01eb503f93741da5[m
+Author: JavAsan0 <carlosasanza15072001@gmail.com>
+Date:   Tue Jun 20 11:59:46 2023 -0500
+
+    v.6 Buscador Vista Cliente(FUNCIONAL)
+
+[33mcommit dee6f0ab269d2bbbb6a6d8557e3262d967000c39[m
+Author: JavAsan0 <carlosasanza15072001@gmail.com>
+Date:   Tue Jun 20 01:46:27 2023 -0500
+
+    (v.4 Reporte Sucursales con cuadro de busqueda-Tabla Pedidos Mejorada-Validaciones en archivos nuevo.php)
+
+[33mcommit afd224bde23ded7c7a1bf7fd8418e30dc65d1fe2[m
+Author: angee <repositorios18@gmail.com>
+Date:   Mon Jun 19 20:51:42 2023 -0500
+
+    V.5 Maquetado plantilla publico: Nosotros and Servicios
+
+[33mcommit fcc416f25d2ee670d8095e6e3edc40bf02504654[m
+Author: angee <repositorios18@gmail.com>
+Date:   Mon Jun 19 20:44:48 2023 -0500
+
+    V.4 Maquetado plantilla publico: Index
+
+[33mcommit d12828340ad8148058ff4d4dc183e4d0c0639c88[m
+Merge: b837aeb 25d9b23
+Author: JavAsan0 <carlosasanza15072001@gmail.com>
+Date:   Mon Jun 19 19:57:17 2023 -0500
+
+    Merge branch 'main' of https://gitlab.com/JavAsan0/fedex
+
+[33mcommit b837aeb6dd66885a35f31f9a62d029592760a9c7[m
+Author: JavAsan0 <carlosasanza15072001@gmail.com>
+Date:   Mon Jun 19 19:56:56 2023 -0500
+
+    V.3 Cliente-Pedidos-Reportes Funcional
+
+[33mcommit 25d9b2311d4c3e7a0f39e2b4df0c7f7ba21d0ac4[m
+Author: angee <repositorios18@gmail.com>
+Date:   Mon Jun 19 19:01:38 2023 -0500
+
+    (V.2 Maquetado plantilla publico: header and footer)
+
+[33mcommit ae66a30c00247eacf7f382acaa41fe0b94a6a15c[m
+Author: JavAsan0 <carlosasanza15072001@gmail.com>
+Date:   Mon Jun 19 12:27:59 2023 -0500
+
+    V.1 Jav
+
+[33mcommit bf959ee3ccb216848f875be9bdd718cfc7e0851c[m
+Author: Javier Asanza <carlosasanza15072001@gmail.com>
+Date:   Mon Jun 19 17:23:27 2023 +0000
+
+    Initial commit
